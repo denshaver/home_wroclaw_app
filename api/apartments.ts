@@ -1,5 +1,6 @@
 import { IApartment } from "@/app/api/apartments/_types/apartments";
-import { baseUrl } from "./apiUtils";
+
+const baseUrl = "https://home-wroclaw-app.vercel.app/api";
 
 export const getApartments = async () => {
   const res = await fetch(`${baseUrl}/apartments`);
