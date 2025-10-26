@@ -17,6 +17,7 @@ export function parseApartmentData(rawApartmentData: Api.Message[]) {
     .filter((m) => m.text?.includes("Цена:"));
 
   const parsed = posts.map((t) => {
+    const title = t.text.split("\n")[0].trim() || "No Title";
     const priceMatch = t.text.match(/Цена:[^\n]+/);
     const priceString = priceMatch ? priceMatch[0] : "";
     const [main, extra] = (priceString.match(/\d+/g) || []).map(Number);
@@ -34,6 +35,7 @@ export function parseApartmentData(rawApartmentData: Api.Message[]) {
     }
 
     return {
+      title,
       rooms: rooms ? +rooms : 0,
       url: t.url,
       totalPrice: (main || 0) + (extra || 0),

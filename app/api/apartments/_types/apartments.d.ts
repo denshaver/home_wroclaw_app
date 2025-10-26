@@ -1,11 +1,5 @@
-export interface ApartmentsRequestBody {
-  maxPrice?: number;
-  minPrice?: number;
-  maxRooms?: number;
-  minRooms?: number;
-}
-
 export interface IApartment {
+  title: string;
   rooms: number;
   url: string;
   totalPrice: number;
