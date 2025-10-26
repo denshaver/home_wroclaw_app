@@ -2,10 +2,10 @@ import React from "react";
 import { Stack } from "@mui/material";
 import Header from "../components/Header";
 import Configurator from "../components/Configurator";
-import { getApartments } from "@/api/apartments";
 import ApartmentCard from "@/components/ApartmentCard";
 import { getSettingsFromSearchParams } from "@/utils/searchParams";
 import { filterApartments } from "@/utils/filter";
+import getApartments from "./api/apartments/_requests/apartments";
 
 export default async function Home({
   searchParams,

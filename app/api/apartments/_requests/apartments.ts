@@ -1,8 +1,7 @@
 import { IApartment } from "@/app/api/apartments/_types/apartments";
+import { baseUrl } from "../../utils";
 
-const baseUrl = "https://home-wroclaw-app.vercel.app/api";
-
-export const getApartments = async () => {
+export default async function getApartments() {
   const res = await fetch(`${baseUrl}/apartments`);
 
   if (!res.ok) {
@@ -10,4 +9,4 @@ export const getApartments = async () => {
   }
 
   return res.json() as Promise<IApartment[]>;
-};
+}
