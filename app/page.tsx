@@ -1,5 +1,5 @@
 import React from "react";
-import { Stack } from "@mui/material";
+import { Stack, Typography } from "@mui/material";
 import Header from "../components/Header";
 import Configurator from "../components/Configurator";
 import ApartmentCard from "@/components/ApartmentCard";
@@ -33,8 +33,22 @@ export default async function Home({
           marginTop: 4,
         }}
       >
+        <Typography
+          variant="subtitle1"
+          gutterBottom
+          color="textSecondary"
+          sx={{
+            textAlign: "right",
+          }}
+        >
+          Found {filteredApartments.length} apartments
+        </Typography>
         {filteredApartments.map((apartment, index) => (
-          <ApartmentCard key={apartment.url + index} apartment={apartment} />
+          <ApartmentCard
+            key={apartment.url + index}
+            apartment={apartment}
+            index={index}
+          />
         ))}
       </Stack>
     </Stack>

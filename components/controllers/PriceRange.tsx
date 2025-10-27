@@ -49,6 +49,7 @@ export default function PriceRange({
         getAriaValueText={valuetext}
         disableSwap
         max={7000}
+        step={50}
       />
       <Typography color="helperText" variant="body2">
         Selected range: {sliderLabel()}

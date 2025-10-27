@@ -1,11 +1,14 @@
 import { IApartment } from "@/app/api/apartments/_types/apartments";
-import { Button, Stack, Typography } from "@mui/material";
+import { Stack, Typography } from "@mui/material";
 import React from "react";
+import ApartmentCardButton from "./ApartmentCardButton";
 
 export default function ApartmentCard({
   apartment,
+  index,
 }: {
   apartment: IApartment;
+  index: number;
 }) {
   return (
     <Stack
@@ -21,19 +24,21 @@ export default function ApartmentCard({
       }}
     >
       <Stack>
-        <Typography variant="h6">{apartment.title}</Typography>
-        <Typography variant="body1">
-          Price: {apartment.totalPrice} PLN
+        <Typography variant="h6">
+          {index + 1}. {apartment.title}
+        </Typography>
+        <Typography variant="body1" color="textSecondary">
+          Price:{" "}
+          <Typography component="span" fontWeight="bold">
+            {apartment.totalPrice} PLN
+          </Typography>{" "}
+          | Rooms:{" "}
+          <Typography component="span" fontWeight="bold">
+            {apartment.rooms}
+          </Typography>
         </Typography>
       </Stack>
-      <Button
-        variant="outlined"
-        color="primary"
-        href={apartment.url}
-        target="_blank"
-      >
-        View Details
-      </Button>
+      <ApartmentCardButton url={apartment.url} />
     </Stack>
   );
 }

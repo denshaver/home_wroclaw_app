@@ -19,7 +19,7 @@ export async function GET() {
       sessionString
     );
 
-    const limit = 350;
+    const limit = 500;
     const channel = "home_Wroclaw";
 
     const messages = await telegramClient.getMessages(channel, { limit });

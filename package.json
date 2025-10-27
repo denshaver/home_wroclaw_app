@@ -1,6 +1,6 @@
 {
   "name": "home-wroclaw-parser",
-  "version": "0.1.0",
+  "version": "1.0.1",
   "private": true,
   "type": "module",
   "scripts": {
@@ -13,6 +13,7 @@
     "@emotion/styled": "^11.14.1",
     "@mui/icons-material": "^7.3.4",
     "@mui/material": "^7.3.4",
+    "@vercel/analytics": "^1.5.0",
     "next": "15.5.6",
     "react": "19.1.0",
     "react-dom": "19.1.0",
