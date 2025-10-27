@@ -1,11 +1,24 @@
-import {
-  Box,
-  FormLabel,
-  FormGroup,
-  FormControlLabel,
-  Checkbox,
-} from "@mui/material";
+import { Box, FormLabel, Autocomplete, TextField } from "@mui/material";
 import React from "react";
+
+const rooms_options = [
+  {
+    title: "1 Room",
+    value: 1,
+  },
+  {
+    title: "2 Rooms",
+    value: 2,
+  },
+  {
+    title: "3 Rooms",
+    value: 3,
+  },
+  {
+    title: "4 Rooms",
+    value: 4,
+  },
+];
 
 export default function RoomsPicker({
   setSelectedRooms,
@@ -16,61 +29,21 @@ export default function RoomsPicker({
   selectedRooms: number[];
   disabled?: boolean;
 }) {
-  const handleRoomChange = (room: number) => {
-    setSelectedRooms((prev) =>
-      prev.includes(room) ? prev.filter((r) => r !== room) : [...prev, room]
-    );
-  };
-
   return (
-    <Box>
-      <FormLabel> Number of Rooms </FormLabel>
-      <FormGroup
-        sx={{
-          flexDirection: "row",
-        }}
-      >
-        <FormControlLabel
-          control={
-            <Checkbox
-              disabled={disabled}
-              checked={selectedRooms.includes(1)}
-              onChange={() => handleRoomChange(1)}
-            />
-          }
-          label="1 Room"
-        />
-        <FormControlLabel
-          control={
-            <Checkbox
-              disabled={disabled}
-              checked={selectedRooms.includes(2)}
-              onChange={() => handleRoomChange(2)}
-            />
-          }
-          label="2 Rooms"
-        />
-        <FormControlLabel
-          control={
-            <Checkbox
-              disabled={disabled}
-              checked={selectedRooms.includes(3)}
-              onChange={() => handleRoomChange(3)}
-            />
-          }
-          label="3 Rooms"
-        />
-        <FormControlLabel
-          control={
-            <Checkbox
-              disabled={disabled}
-              checked={selectedRooms.includes(4)}
-              onChange={() => handleRoomChange(4)}
-            />
-          }
-          label="4 Rooms"
-        />
-      </FormGroup>
+    <Box sx={{ flexGrow: 2 }}>
+      <FormLabel id="room-picker">Number of Rooms</FormLabel>
+      <Autocomplete
+        multiple
+        id="rooms-picker"
+        disabled={disabled}
+        defaultValue={rooms_options.filter((o) =>
+          selectedRooms.includes(o.value)
+        )}
+        onChange={(_, values) => setSelectedRooms(values.map((v) => v.value))}
+        options={rooms_options}
+        getOptionLabel={(option) => option.title}
+        renderInput={(params) => <TextField {...params} variant="standard" />}
+      />
     </Box>
   );
 }

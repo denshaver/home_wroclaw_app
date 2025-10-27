@@ -25,7 +25,7 @@ export default function Header() {
           }}
         />
       </Stack>
-      <Typography variant="body1" textAlign="center">
+      <Typography variant="body1" textAlign="center" color="textSecondary">
         Find your perfect home in Wroclaw with ease.
       </Typography>
     </Stack>

@@ -32,8 +32,8 @@ export default function ApartmentCardButton({ url }: { url: string }) {
 
   return (
     <Button
-      variant="outlined"
-      color={isViewed ? "info" : "secondary"}
+      variant={isViewed ? "outlined" : "contained"}
+      color={isViewed ? "info" : "primary"}
       onClick={handleClick}
       disableElevation={isViewed}
       sx={{

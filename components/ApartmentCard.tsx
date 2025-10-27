@@ -19,7 +19,7 @@ export default function ApartmentCard({
         alignItems="center"
       >
         <Stack>
-          <Typography variant="h6">
+          <Typography variant="h6" color="secondary">
             {index + 1}. {apartment.title}
           </Typography>
           <Typography variant="body1" color="textSecondary">

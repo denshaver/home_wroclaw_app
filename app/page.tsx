@@ -39,14 +39,7 @@ export default async function Home({
               gap: 2,
             }}
           >
-            <Typography
-              variant="subtitle1"
-              gutterBottom
-              color="textSecondary"
-              sx={{
-                textAlign: "right",
-              }}
-            >
+            <Typography variant="subtitle1" gutterBottom color="textSecondary">
               Found {filteredApartments.length} apartments
             </Typography>
             {filteredApartments.map((apartment, index) => (

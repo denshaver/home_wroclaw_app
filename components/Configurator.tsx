@@ -29,25 +29,25 @@ export default function Configurator({ rooms, price }: ConfiguratorProps) {
   return (
     <Fade in={true} timeout={450}>
       <Stack className="article">
-        <Stack direction="row" spacing={6}>
-          <PriceRange
-            disabled={isPending}
-            priceRange={priceRange}
-            setPriceRange={setPriceRange}
-          />
-          <RoomsPicker
-            disabled={isPending}
-            selectedRooms={selectedRooms}
-            setSelectedRooms={setSelectedRooms}
-          />
-          <Stack
-            sx={{
-              flexDirection: "row",
-              flexGrow: 2,
-              alignItems: "center",
-              justifyContent: "flex-end",
-            }}
-          >
+        <Stack
+          direction="row"
+          spacing={5}
+          alignItems="center"
+          justifyContent="space-between"
+        >
+          <Stack flexGrow={3} direction="row" spacing={5}>
+            <PriceRange
+              disabled={isPending}
+              priceRange={priceRange}
+              setPriceRange={setPriceRange}
+            />
+            <RoomsPicker
+              disabled={isPending}
+              selectedRooms={selectedRooms}
+              setSelectedRooms={setSelectedRooms}
+            />
+          </Stack>
+          <Stack direction="row" alignItems="center" justifyContent="flex-end">
             <Button
               sx={{ alignSelf: "center", height: "fit-content" }}
               onClick={applyFilters}

@@ -37,7 +37,7 @@ export default function PriceRange({
   }
 
   return (
-    <Box sx={{ width: 300 }}>
+    <Box sx={{ flexGrow: 2 }}>
       <FormLabel id="range-slider">Price Range (PLN)</FormLabel>
       <Slider
         disabled={disabled}
