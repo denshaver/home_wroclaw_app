@@ -27,7 +27,12 @@ export default async function Home({
 
   return (
     <ClientThemeProvider>
-      <Stack className="container">
+      <Stack
+        className="container"
+        sx={{
+          width: { xs: "95%", md: "100%" },
+        }}
+      >
         <Fade in={true} timeout={400}>
           <Header />
         </Fade>

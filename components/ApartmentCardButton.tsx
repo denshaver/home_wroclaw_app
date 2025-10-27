@@ -38,6 +38,8 @@ export default function ApartmentCardButton({ url }: { url: string }) {
       disableElevation={isViewed}
       sx={{
         height: "fit-content",
+        width: "140px",
+        alignSelf: { xs: "flex-end", md: "unset" },
       }}
     >
       View Details

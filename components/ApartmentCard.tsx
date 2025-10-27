@@ -13,12 +13,21 @@ export default function ApartmentCard({
   return (
     <Fade in={true} timeout={500 + index * 150}>
       <Stack
-        className="card"
-        direction="row"
-        justifyContent="space-between"
-        alignItems="center"
+        className="shadow-s"
+        sx={{
+          flexDirection: { xs: "column", md: "row" },
+          justifyContent: "space-between",
+          alignItems: "center",
+          gap: 2,
+          borderRadius: "10px",
+          padding: "10px 15px",
+        }}
       >
-        <Stack>
+        <Stack
+          sx={{
+            width: { xs: "100%", md: "auto" },
+          }}
+        >
           <Typography variant="h6" color="secondary">
             {index + 1}. {apartment.title}
           </Typography>

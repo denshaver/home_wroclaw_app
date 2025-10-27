@@ -28,14 +28,28 @@ export default function Configurator({ rooms, price }: ConfiguratorProps) {
 
   return (
     <Fade in={true} timeout={450}>
-      <Stack className="article">
+      <Stack
+        className="shadow-m"
+        sx={{
+          padding: "24px",
+          borderRadius: "10px",
+        }}
+      >
         <Stack
-          direction="row"
-          spacing={5}
-          alignItems="center"
-          justifyContent="space-between"
+          sx={{
+            flexDirection: { xs: "column", md: "row" },
+            gap: { xs: 3, md: 5 },
+            alignItems: { xs: "stretch", md: "center" },
+            justifyContent: "space-between",
+          }}
         >
-          <Stack flexGrow={3} direction="row" spacing={5}>
+          <Stack
+            sx={{
+              gap: { xs: 3, md: 5 },
+              flexDirection: { xs: "column", md: "row" },
+              flexGrow: 3,
+            }}
+          >
             <PriceRange
               disabled={isPending}
               priceRange={priceRange}
