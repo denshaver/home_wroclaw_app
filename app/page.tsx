@@ -1,11 +1,12 @@
 import React from "react";
-import { Stack, Typography } from "@mui/material";
+import { Fade, Stack, Typography } from "@mui/material";
 import Header from "../components/Header";
 import Configurator from "../components/Configurator";
 import ApartmentCard from "@/components/ApartmentCard";
 import { getSettingsFromSearchParams } from "@/utils/searchParams";
 import { filterApartments } from "@/utils/filter";
 import getApartments from "./api/apartments/_requests/apartments";
+import ClientThemeProvider from "./_theme/ClientThemeProvider";
 
 export default async function Home({
   searchParams,
@@ -25,32 +26,39 @@ export default async function Home({
   );
 
   return (
-    <Stack className="container">
-      <Header />
-      <Configurator rooms={roomsSettings} price={priceSettings} />
-      <Stack
-        sx={{
-          marginTop: 4,
-        }}
-      >
-        <Typography
-          variant="subtitle1"
-          gutterBottom
-          color="textSecondary"
-          sx={{
-            textAlign: "right",
-          }}
-        >
-          Found {filteredApartments.length} apartments
-        </Typography>
-        {filteredApartments.map((apartment, index) => (
-          <ApartmentCard
-            key={apartment.url + index}
-            apartment={apartment}
-            index={index}
-          />
-        ))}
+    <ClientThemeProvider>
+      <Stack className="container">
+        <Fade in={true} timeout={400}>
+          <Header />
+        </Fade>
+        <Configurator rooms={roomsSettings} price={priceSettings} />
+        <Fade in={true} timeout={500}>
+          <Stack
+            sx={{
+              marginTop: 4,
+              gap: 2,
+            }}
+          >
+            <Typography
+              variant="subtitle1"
+              gutterBottom
+              color="textSecondary"
+              sx={{
+                textAlign: "right",
+              }}
+            >
+              Found {filteredApartments.length} apartments
+            </Typography>
+            {filteredApartments.map((apartment, index) => (
+              <ApartmentCard
+                key={apartment.url + index}
+                apartment={apartment}
+                index={index}
+              />
+            ))}
+          </Stack>
+        </Fade>
       </Stack>
-    </Stack>
+    </ClientThemeProvider>
   );
 }

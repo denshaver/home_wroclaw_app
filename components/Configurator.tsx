@@ -1,6 +1,6 @@
 "use client";
 
-import { Button, Stack, Typography } from "@mui/material";
+import { Button, Fade, Stack } from "@mui/material";
 import React, { useState, useTransition } from "react";
 import PriceRange from "./controllers/PriceRange";
 import RoomsPicker from "./controllers/RoomsPicker";
@@ -27,39 +27,39 @@ export default function Configurator({ rooms, price }: ConfiguratorProps) {
   };
 
   return (
-    <Stack>
-      <Typography variant="h5" marginTop={4} marginBottom={2}>
-        Configuration
-      </Typography>
-      <Stack direction="row" spacing={6}>
-        <PriceRange
-          disabled={isPending}
-          priceRange={priceRange}
-          setPriceRange={setPriceRange}
-        />
-        <RoomsPicker
-          disabled={isPending}
-          selectedRooms={selectedRooms}
-          setSelectedRooms={setSelectedRooms}
-        />
-        <Stack
-          sx={{
-            flexDirection: "row",
-            flexGrow: 2,
-            alignItems: "center",
-            justifyContent: "flex-end",
-          }}
-        >
-          <Button
-            sx={{ alignSelf: "center", height: "fit-content" }}
-            onClick={applyFilters}
+    <Fade in={true} timeout={450}>
+      <Stack className="article">
+        <Stack direction="row" spacing={6}>
+          <PriceRange
             disabled={isPending}
-            variant="contained"
+            priceRange={priceRange}
+            setPriceRange={setPriceRange}
+          />
+          <RoomsPicker
+            disabled={isPending}
+            selectedRooms={selectedRooms}
+            setSelectedRooms={setSelectedRooms}
+          />
+          <Stack
+            sx={{
+              flexDirection: "row",
+              flexGrow: 2,
+              alignItems: "center",
+              justifyContent: "flex-end",
+            }}
           >
-            Apply Filters
-          </Button>
+            <Button
+              sx={{ alignSelf: "center", height: "fit-content" }}
+              onClick={applyFilters}
+              disabled={isPending}
+              variant="contained"
+              size="large"
+            >
+              Apply Filters
+            </Button>
+          </Stack>
         </Stack>
       </Stack>
-    </Stack>
+    </Fade>
   );
 }

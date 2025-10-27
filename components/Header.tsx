@@ -5,7 +5,7 @@ import HomeIcon from "@/public/icon.png";
 
 export default function Header() {
   return (
-    <>
+    <Stack marginBottom={4}>
       <Stack
         direction="row"
         spacing={2}
@@ -13,13 +13,21 @@ export default function Header() {
         justifyContent="center"
       >
         <Typography variant="h3" component="h1">
-          Wroclaw Home Finder!
+          Wroclaw Home
         </Typography>
-        <Image src={HomeIcon} alt="Home Icon" width={50} height={50} />
+        <Image
+          src={HomeIcon}
+          alt="Home Icon"
+          width={50}
+          height={50}
+          style={{
+            transform: "rotate(12deg)",
+          }}
+        />
       </Stack>
       <Typography variant="body1" textAlign="center">
         Find your perfect home in Wroclaw with ease.
       </Typography>
-    </>
+    </Stack>
   );
 }

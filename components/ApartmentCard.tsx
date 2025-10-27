@@ -1,5 +1,5 @@
 import { IApartment } from "@/app/api/apartments/_types/apartments";
-import { Stack, Typography } from "@mui/material";
+import { Fade, Stack, Typography } from "@mui/material";
 import React from "react";
 import ApartmentCardButton from "./ApartmentCardButton";
 
@@ -11,34 +11,30 @@ export default function ApartmentCard({
   index: number;
 }) {
   return (
-    <Stack
-      direction="row"
-      spacing={2}
-      alignItems="center"
-      justifyContent="space-between"
-      sx={{
-        padding: 2,
-        border: "1px solid #ccc",
-        borderRadius: 2,
-        marginBottom: 2,
-      }}
-    >
-      <Stack>
-        <Typography variant="h6">
-          {index + 1}. {apartment.title}
-        </Typography>
-        <Typography variant="body1" color="textSecondary">
-          Price:{" "}
-          <Typography component="span" fontWeight="bold">
-            {apartment.totalPrice} PLN
-          </Typography>{" "}
-          | Rooms:{" "}
-          <Typography component="span" fontWeight="bold">
-            {apartment.rooms}
+    <Fade in={true} timeout={500 + index * 150}>
+      <Stack
+        className="card"
+        direction="row"
+        justifyContent="space-between"
+        alignItems="center"
+      >
+        <Stack>
+          <Typography variant="h6">
+            {index + 1}. {apartment.title}
           </Typography>
-        </Typography>
+          <Typography variant="body1" color="textSecondary">
+            Price:{" "}
+            <Typography component="span" fontWeight="bold">
+              {apartment.totalPrice} PLN
+            </Typography>{" "}
+            | Rooms:{" "}
+            <Typography component="span" fontWeight="bold">
+              {apartment.rooms}
+            </Typography>
+          </Typography>
+        </Stack>
+        <ApartmentCardButton url={apartment.url} />
       </Stack>
-      <ApartmentCardButton url={apartment.url} />
-    </Stack>
+    </Fade>
   );
 }

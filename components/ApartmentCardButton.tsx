@@ -32,15 +32,12 @@ export default function ApartmentCardButton({ url }: { url: string }) {
 
   return (
     <Button
-      variant="contained"
-      color={"primary"}
+      variant="outlined"
+      color={isViewed ? "info" : "secondary"}
       onClick={handleClick}
       disableElevation={isViewed}
       sx={{
-        backgroundColor: isViewed ? "#ddddddff" : undefined,
-        "&:hover": {
-          backgroundColor: isViewed ? "#bbbbbbff" : undefined,
-        },
+        height: "fit-content",
       }}
     >
       View Details
