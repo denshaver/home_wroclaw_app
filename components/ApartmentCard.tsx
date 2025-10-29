@@ -1,6 +1,8 @@
+"use client";
+
 import { IApartment } from "@/app/api/apartments/_types/apartments";
 import { Fade, Stack, Typography } from "@mui/material";
-import React from "react";
+import React, { useEffect } from "react";
 import ApartmentCardButton from "./ApartmentCardButton";
 
 export default function ApartmentCard({
@@ -10,8 +12,36 @@ export default function ApartmentCard({
   apartment: IApartment;
   index: number;
 }) {
+  const [isViewed, setIsViewed] = React.useState(false);
+  const viewed =
+    typeof window !== "undefined"
+      ? localStorage.getItem("viewedApartments")
+      : null;
+  const viewedApartments = viewed ? (JSON.parse(viewed) as string[]) : [];
+
+  useEffect(() => {
+    if (viewedApartments.includes(apartment.url)) {
+      setIsViewed(true);
+    }
+  }, [apartment.url]);
+
+  function handleClick() {
+    if (!isViewed) {
+      viewedApartments.push(apartment.url);
+      localStorage.setItem(
+        "viewedApartments",
+        JSON.stringify(viewedApartments)
+      );
+    }
+
+    window.open(apartment.url, "_blank");
+    setIsViewed(true);
+  }
+
+  const timeOut = 500 + index * 150;
+
   return (
-    <Fade in={true} timeout={500 + index * 150}>
+    <Fade in={true} timeout={timeOut >= 2000 ? 2000 : timeOut}>
       <Stack
         className="shadow-s"
         sx={{
@@ -42,7 +72,7 @@ export default function ApartmentCard({
             </Typography>
           </Typography>
         </Stack>
-        <ApartmentCardButton url={apartment.url} />
+        <ApartmentCardButton isViewed={isViewed} onClick={handleClick} />
       </Stack>
     </Fade>
   );
