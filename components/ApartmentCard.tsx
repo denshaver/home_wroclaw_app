@@ -13,13 +13,10 @@ export default function ApartmentCard({
   index: number;
 }) {
   const [isViewed, setIsViewed] = React.useState(false);
-  const viewed =
-    typeof window !== "undefined"
-      ? localStorage.getItem("viewedApartments")
-      : null;
-  const viewedApartments = viewed ? (JSON.parse(viewed) as string[]) : [];
 
   useEffect(() => {
+    const viewed = localStorage.getItem("viewedApartments");
+    const viewedApartments = viewed ? (JSON.parse(viewed) as string[]) : [];
     if (viewedApartments.includes(apartment.url)) {
       setIsViewed(true);
     }
@@ -27,6 +24,9 @@ export default function ApartmentCard({
 
   function handleClick() {
     if (!isViewed) {
+      const viewed = localStorage.getItem("viewedApartments");
+      const viewedApartments = viewed ? (JSON.parse(viewed) as string[]) : [];
+
       viewedApartments.push(apartment.url);
       localStorage.setItem(
         "viewedApartments",
