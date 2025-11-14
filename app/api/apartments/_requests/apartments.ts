@@ -1,3 +1,5 @@
+"use server";
+
 import { IApartment } from "@/app/api/apartments/_types/apartments";
 import { baseUrl } from "../../utils";
 
