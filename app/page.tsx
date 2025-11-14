@@ -1,5 +1,5 @@
 import React from "react";
-import { Stack, Typography } from "@mui/material";
+import { CircularProgress, Stack, Typography } from "@mui/material";
 import Header from "../components/Header";
 import Configurator from "../components/Configurator";
 import ApartmentCard from "@/components/ApartmentCard";
